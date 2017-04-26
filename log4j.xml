@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%d{HH:mm:ss:SSS} - %p - %C{1} - %m%n"/>
+        </layout>
+    </appender>
+	<appender name="debug" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="../logs/Shdrc_debug"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+	    <param name="Append" value="true"/>
+		<param name="Threshold" value="DEBUG"/>
+		<layout class="org.apache.log4j.PatternLayout">
+		    <param name="ConversionPattern" value="%d{HH:mm:ss:SSS} - %p - %C{1} - %L - %m%n "/>
+	    </layout>
+	</appender>
+	<appender name="info" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="../logs/Shdrc_info"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+	    <param name="Append" value="true"/>
+		<param name="Threshold" value="INFO"/>
+		<layout class="org.apache.log4j.PatternLayout">
+		    <param name="ConversionPattern" value="%d{HH:mm:ss:SSS} - %p - %C{1} - %L - %m%n "/>
+	    </layout>
+	</appender>
+	<appender name="warn" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="../logs/Shdrc_warn"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+	    <param name="Append" value="true"/>
+		<param name="Threshold" value="WARN"/>
+		<layout class="org.apache.log4j.PatternLayout">
+		    <param name="ConversionPattern" value="%d{HH:mm:ss:SSS} - %p - %C{1} - %L - %m%n "/>
+	    </layout>
+	</appender>
+	<appender name="error" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="../logs/Shdrc_error"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+	    <param name="Append" value="true"/>
+		<param name="Threshold" value="ERROR"/>
+		<layout class="org.apache.log4j.PatternLayout">
+		    <param name="ConversionPattern" value="%d{HH:mm:ss:SSS} - %p - %C{1} - %L - %m%n "/>
+	    </layout>
+	</appender>
+    <logger name="org.apache">
+        <level value="WARN"/>
+    </logger>
+    <logger name="org.apache.commons.dbcp">
+        <level value="WARN"/>
+    </logger>
+	<logger name="org.apache.log4j">
+        <level value="WARN"/>
+    </logger>
+    <logger name="net.sf.hibernate">
+        <level value="WARN"/>
+    </logger>
+    <logger name="org.displaytag">
+        <level value="WARN"/>
+    </logger>
+    <root>
+		<appender-ref ref="debug"/>
+    	<!-- 
+		<appender-ref ref="info"/>
+        <appender-ref ref="warn"/>
+    	 -->
+        <appender-ref ref="error"/>
+    </root>
+</log4j:configuration>
